@@ -1,7 +1,8 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { ArrowUpRight, Github, Linkedin, Mail, Menu, X, Code, Database, Brain, BarChart3, Globe, Cpu, Users, Lightbulb, ExternalLink, Eye, GraduationCap, BookOpen, Award, Download, Link2, Sparkles, Zap } from "lucide-react";
+// FIX 1: Removed unused 'ExternalLink', 'Sparkles', 'Zap' from this import
+import { ArrowUpRight, Github, Linkedin, Mail, Menu, X, Code, Database, Brain, BarChart3, Globe, Cpu, Users, Lightbulb, Eye, GraduationCap, BookOpen, Award, Download, Link2 } from "lucide-react";
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
@@ -11,8 +12,19 @@ import { Badge } from "@/components/ui/badge";
 import { Separator } from "@/components/ui/separator";
 import { useState } from "react";
 
+// FIX 2: Created a proper interface for the 'project' object to replace 'any'
+interface Project {
+  title: string;
+  image: string;
+  desc: string;
+  fullDescription: string;
+  tech: string[];
+  github: string;
+}
+
 // Project Modal Component
-function ProjectModal({ project, isOpen, onClose }: { project: any; isOpen: boolean; onClose: () => void }) {
+// Applied the 'Project' interface here
+function ProjectModal({ project, isOpen, onClose }: { project: Project; isOpen: boolean; onClose: () => void }) {
   if (!isOpen) return null;
 
   return (
@@ -156,7 +168,8 @@ function Navigation() {
 }
 
 // Project Card Component
-function ProjectCard({ project, index }: { project: any; index: number }) {
+// Applied the 'Project' interface here as well
+function ProjectCard({ project, index }: { project: Project; index: number }) {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   return (
@@ -310,7 +323,8 @@ export default function Home() {
           >
             <Card className="premium-card gradient-border">
               <CardContent className="p-6 md:p-8 text-zinc-300 leading-relaxed">
-                I'm a Data Science graduate with a Bachelor's in Statistics and Data Science, currently pursuing an Engineering degree in Data Science and Business Intelligence, and a Master's in Artificial Intelligence and Digital Science. I'm skilled in Data Science, Data Analysis, BI, and Automation using Python, R, SQL, Tableau, Power BI, and n8n. I also have hands-on experience in machine learning, predictive modeling, data pipelines, and ERP/CRM manipulation to enhance business processes. Passionate about leveraging data and automation to drive AI innovation, optimize decision-making, and support digital transformation across industries.
+                {/* FIX 3: Replaced apostrophes with &apos; */}
+                I&apos;m a Data Science graduate with a Bachelor&apos;s in Statistics and Data Science, currently pursuing an Engineering degree in Data Science and Business Intelligence, and a Master&apos;s in Artificial Intelligence and Digital Science. I&apos;m skilled in Data Science, Data Analysis, BI, and Automation using Python, R, SQL, Tableau, Power BI, and n8n. I also have hands-on experience in machine learning, predictive modeling, data pipelines, and ERP/CRM manipulation to enhance business processes. Passionate about leveraging data and automation to drive AI innovation, optimize decision-making, and support digital transformation across industries.
                 
                 <div className="mt-8 flex flex-wrap gap-3">
                   {[
