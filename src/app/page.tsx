@@ -301,7 +301,7 @@ export default function Home() {
                     <a href="#projects" className="inline-flex items-center gap-2">View Projects <ArrowUpRight className="size-4" /></a>
                   </Button>
                   <Button asChild size="lg" variant="secondary" className="hover-glow">
-                    <a href="/Amine_Bouanani_CV.pdf" download>Download CV</a>
+                    <a href="/Cv Amine Bouanani.pdf" download>Download CV</a>
                   </Button>
                 </div>
               </motion.div>
